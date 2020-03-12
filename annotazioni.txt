@@ -1,0 +1,23 @@
+
+	-	per ora ho tutti i grafici error.png che sono scritti in italiano, mentre plot e heatmap sono in inglese!
+
+	-	è possibile che sarà da ritoccare i grafici. Se bisogna cambiare gli stessi file, ci si piazza in questa cartella
+	e il comando per aprirli tutti in Sublime è "find ./ -name <nomefile> | xargs subl"
+
+	-	Gherardi vuole che rho abbia estrazione gaussiana, ancora da decidere come fare. Meglio provare in una cartella esterna a ProgrammaTesi e aggiungerla successivamente quando diventa definitiva.
+	Gherardi dice di farla con più di  ripetizioni ma diventa lunghissima.
+
+	-	mancano al completamento le simulazioni Constatistica di N10 RhoDouble e di N20 RhoSingle (N20 RhoDouble non l'ho lanciata perchè sembra lunghissima)
+
+	-	le simulazioni con N=5 vanno a step di un punto mentre quelle per N maggiori vanno a step di (p += N/5). Il problema è che partono tutte da 1 e arrivano a 3*N o 4*N, in ogni caso sono sballati i multipli. Se è da aggiustare (cosa che sarebbe buona), bisogna rifare tutte le simulazioni
+
+	-	potrebbe essere interessante confrontare la varianza effettiva con la varianza di C_n,p ipotizzata con il mean-field
+
+	-	potrebbe essere interessante aggiungere un conteggio della capacità della rete neurale
+
+	-	dubbi aperti:
+		1_		Qui la prima domanda: secondo lei 10 ripetizioni sono sufficienti per fare statistica? Per il livello di precisione che mi serve, io credo di si, ma chiedo più che altro se quando andrò a scrivere la tesi sarà considerata una cosa "ragionevole" oppure una cosa "ridicola" il fatto di aver usato 10 ripetizioni per fare statistica.
+		4_		Cosa sorprendente è che sembra che maggiore sia la media tra gli overlap, maggiore sia l'incertezza statistica! E di questo non mi spiego minimamente il perchè!
+		5_		per N=10 è emerso che i valori misurati sono molto inferiori a quelli attesi, ho ipotizzato che sia dovuto al fatto che gli errori sistematici legati al max_batches aumentano all'aumentare di N. Per confermare l'ipotesi ho lanciato una simulazione per rho monodisperso in N=20
+						- Aumentando N come giustamente dici aumenterà anche il numero di batch che devi aspettare per avere convergenza. (Prova a cercare in letteratura se trovi la complessità algoritmica del perceptron algorithm, cioè come devo far scalare il numero di iterazioni dell'algoritmo con la taglia N del problema)
+		6_		Per accelerare le simulazioni si potrebbe fare: A) diminuire la statistica (ma 10 è già poco) B) diminuire max_p visto che tanto gran parte della curva è piatta C) incrementare di più p ad ogni ciclo (e avere quindi punti più diradati)
